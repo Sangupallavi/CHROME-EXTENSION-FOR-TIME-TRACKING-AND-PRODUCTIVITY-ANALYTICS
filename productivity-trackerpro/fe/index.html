@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Time Tracker App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+    }
+
+    nav {
+      background: #5c67f2;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h1 {
+      margin: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      margin-top: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input, button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #5c67f2;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3f48cc;
+    }
+
+    pre {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>Time Tracker</h1>
+    <ul>
+      <li><a onclick="showPage('home')">Home</a></li>
+      <li><a onclick="showPage('signup')">Signup</a></li>
+      <li><a onclick="showPage('login')">Login</a></li>
+      <li><a onclick="showPage('track')">Track</a></li>
+      <li><a onclick="showPage('summary')">Summary</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home -->
+  <div id="home" class="container">
+    <h2>Welcome to Time Tracker</h2>
+    <p>Track how you spend your time online and improve productivity.</p>
+  </div>
+
+  <!-- Signup -->
+  <div id="signup" class="container hidden">
+    <h2>Signup</h2>
+    <input type="text" id="regUsername" placeholder="Username">
+    <input type="password" id="regPassword" placeholder="Password">
+    <button onclick="register()">Register</button>
+  </div>
+
+  <!-- Login -->
+  <div id="login" class="container hidden">
+    <h2>Login</h2>
+    <input type="text" id="loginUsername" placeholder="Username">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Track Time -->
+  <div id="track" class="container hidden">
+    <h2>Track Time</h2>
+    <input type="text" id="url" placeholder="Website URL">
+    <input type="number" id="timeSpent" placeholder="Time in minutes">
+    <button onclick="trackTime()">Log Time</button>
+  </div>
+
+  <!-- Summary -->
+  <div id="summary" class="container hidden">
+    <h2>Weekly Summary</h2>
+    <button onclick="getSummary()">Get Summary</button>
+    <pre id="summaryResult"></pre>
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      const pages = ['home', 'signup', 'login', 'track', 'summary'];
+      pages.forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+      document.getElementById(pageId).classList.remove('hidden');
+    }
+
+    function register() {
+      const user = document.getElementById("regUsername").value;
+      const pass = document.getElementById("regPassword").value;
+      if (user && pass) {
+        localStorage.setItem("user", user);
+        localStorage.setItem("pass", pass);
+        alert("✅ Registered successfully!");
+        showPage("login");
+      } else {
+        alert("❗ Please fill all fields.");
+      }
+    }
+
+    function login() {
+      const user = document.getElementById("loginUsername").value;
+      const pass = document.getElementById("loginPassword").value;
+      const storedUser = localStorage.getItem("user");
+      const storedPass = localStorage.getItem("pass");
+      if (user === storedUser && pass === storedPass) {
+        alert("✅ Login successful!");
+        showPage("track");
+      } else {
+        alert("❌ Invalid credentials.");
+      }
+    }
+
+    function logout() {
+      alert("🚪 Logged out.");
+      showPage("home");
+    }
+
+    const logs = [];
+
+    function trackTime() {
+      const url = document.getElementById("url").value;
+      const minutes = document.getElementById("timeSpent").value;
+      if (url && minutes) {
+        logs.push({ url, minutes });
+        alert(`⏱️ Tracked ${minutes} mins on ${url}`);
+      } else {
+        alert("❗ Please enter both fields.");
+      }
+    }
+
+    function getSummary() {
+      let summaryText = "📊 Weekly Summary:\n";
+      const siteMap = {};
+      logs.forEach(log => {
+        siteMap[log.url] = (siteMap[log.url] || 0) + parseInt(log.minutes);
+      });
+      for (let site in siteMap) {
+        summaryText += `- ${site}: ${siteMap[site]} min\n`;
+      }
+      if (logs.length === 0) summaryText += "No logs yet.";
+      document.getElementById("summaryResult").innerText = summaryText;
+    }
+  </script>
+</body>
+</html>
