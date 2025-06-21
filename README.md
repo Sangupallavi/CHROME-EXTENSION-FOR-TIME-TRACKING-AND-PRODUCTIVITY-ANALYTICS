@@ -26,7 +26,7 @@ What sets this project apart is its focus on self-awareness and improvement. Use
 Overall, this productivity tracker is a great example of a real-world full stack project. It combines browser extension development with modern web technologies and a backend that supports real-time data logging and analysis. It serves as a practical and impactful tool for individuals aiming to take control of their digital time and boost their productivity. This project not only demonstrates proficiency in web development but also solves a meaningful problem faced by many in the digital age.
 
 #OUTPUT#
-![Image](https://github.com/user-attachments/assets/87c918b2-a44d-44c5-8a10-4046636ca232)
+
 
 ![Image](https://github.com/user-attachments/assets/6e9bef43-db98-4d79-ba59-7e748c8b8804)
 
