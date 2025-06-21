@@ -23,4 +23,18 @@ To provide valuable feedback, the extension offers a dashboard (accessible via t
 
 What sets this project apart is its focus on self-awareness and improvement. Users can tag websites as “productive” or “unproductive,” allowing the system to categorize and analyze their behavior over time. This empowers users to make informed decisions about their digital habits, improving focus and efficiency.
 
-Overall, this productivity tracker is a great example of a real-world full stack project. It combines browser extension development with modern web technologies and a backend that supports real-time data logging and analysis. It serves as a practical and impactful tool for individuals aiming to take control of their digital time and boost their productivity. This project not only demonstrates proficiency in web development but also solves a meaningful problem faced by many in the digital age. 
+Overall, this productivity tracker is a great example of a real-world full stack project. It combines browser extension development with modern web technologies and a backend that supports real-time data logging and analysis. It serves as a practical and impactful tool for individuals aiming to take control of their digital time and boost their productivity. This project not only demonstrates proficiency in web development but also solves a meaningful problem faced by many in the digital age.
+
+#OUTPUT#
+![Image](https://github.com/user-attachments/assets/87c918b2-a44d-44c5-8a10-4046636ca232)
+
+![Image](https://github.com/user-attachments/assets/6e9bef43-db98-4d79-ba59-7e748c8b8804)
+
+![Image](https://github.com/user-attachments/assets/c5e297b0-7cbe-43f9-9db3-89c7cce143e4)
+
+![Image](https://github.com/user-attachments/assets/2e9192d5-8199-458b-8fa5-9a342ce3cb5a)
+
+![Image](https://github.com/user-attachments/assets/20721f26-e601-4e87-87e4-a6537fea74ec)
+
+![Image](https://github.com/user-attachments/assets/6c204a4d-7a57-4bb0-b254-2de004aa205d)
+
